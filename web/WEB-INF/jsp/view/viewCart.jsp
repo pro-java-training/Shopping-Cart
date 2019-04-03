@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
     <title>View Cart</title>
-    <a href="<c:url value="/shop" />">Product List</a><br/>
+    <a href="<c:url value="/shop" />">Product List</a><br/><br/>
+    <a href="<c:url value="/shop?action=emptyCart" />">Empty Cart</a><br/><br/>
     <%
         @SuppressWarnings("unchecked")
         Map<Integer, String> products =
