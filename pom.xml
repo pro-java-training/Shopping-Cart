@@ -60,7 +60,7 @@
     </dependencies>
 
     <build>
-        <finalName>Hello-World</finalName>
+        <finalName>Shopping-Cart</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
