@@ -7,7 +7,7 @@
     <groupId>com.codve</groupId>
     <artifactId>Shopping-Cart</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,7 @@
     </dependencies>
 
     <build>
-        <finalName>Hello-World</finalName>
+        <finalName>Shopping-Cart</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>

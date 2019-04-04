@@ -1,4 +1,4 @@
-package com;
+package com.codve;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class StoreServlet extends HttpServlet {
         throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            action = "browser";
+            action = "browse";
         }
         switch (action) {
             case "addToCart":
@@ -37,7 +37,10 @@ public class StoreServlet extends HttpServlet {
             case "viewCart":
                 this.viewCart(request, response);
                 break;
-            case "browser":
+            case "emptyCart":
+                this.emptyCart(request, response);
+                break;
+            case "browse":
             default:
                 this.browse(request, response);
                 break;
@@ -55,8 +58,9 @@ public class StoreServlet extends HttpServlet {
         }
 
         // 在Servlet中使用Session
-        HttpSession session = request.getSession();// 如果session 不存在，返回null
-        // HttpSession session = request.getSession(false); // 如果session不存在，则创建一个
+        HttpSession session = request.getSession();
+        // 等同于getSession(true), 如果session 不存在，则创建一个
+        // 另一种写法是: request.getSession(false); 如果session不存在，返回null
         if (session.getAttribute("cart") == null) {
             session.setAttribute("cart", new Hashtable<Integer, Integer>());
         }
@@ -69,6 +73,12 @@ public class StoreServlet extends HttpServlet {
             cart.put(productId, 0);
         }
         cart.put(productId, cart.get(productId) + 1);
+        response.sendRedirect("shop?action=viewCart");
+    }
+
+    private void emptyCart(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        request.getSession().removeAttribute("cart");
         response.sendRedirect("shop?action=viewCart");
     }
 
